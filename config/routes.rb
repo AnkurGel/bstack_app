@@ -1,9 +1,11 @@
 Bstack::Application.routes.draw do
   resources :users
+  resources :sessions
 
   root 'default_pages#home'
   get '/signup' => 'users#new'
-  #get '/login' => 'sessions#new'
+  get '/login' => 'sessions#new'
+  match '/logout', to: 'sessions#destroy', via: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
