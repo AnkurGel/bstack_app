@@ -49,3 +49,11 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+input, textarea, select, .uneditable-input {
+  width: 100%;
+}
+
+#error_messages {
+  color: #f00;
+}

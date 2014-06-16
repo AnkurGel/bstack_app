@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= content_for?(:title) ? yield(:title) : "BStack app" %></title>
+  <title><%= content_for?(:title) ? "BStack | #{yield(:title)}" : "BStack app" %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -9,6 +9,9 @@
 <body>
   <%= render 'layouts/header' %>
   <div class="container">
+    <% flash.each do |k, v| %>
+      <%= content_tag(:div, v, class: "alert alert-#{k}") %>
+    <% end %>
     <%= yield %>
   </div>
 
