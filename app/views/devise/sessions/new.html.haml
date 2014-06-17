@@ -1,0 +1,18 @@
+-title "Login"
+
+%h1 Login
+
+.row
+  .span6.offset3
+    =form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| 
+
+      = f.label :email
+      = f.text_field :email
+
+      = f.label :password
+      = f.password_field :password
+
+      = f.submit 'Login', class: 'btn btn-large btn-primary'
+    %p
+      Or
+      = link_to "Sign Up instead", signup_path

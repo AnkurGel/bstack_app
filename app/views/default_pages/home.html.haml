@@ -1,2 +1,15 @@
 %h1 BStack Uploader
-%p This is uploader
+
+.row
+  - if signed_in?
+    .span6.offset3
+      .text-center
+        = link_to "Upload New File", '#', class: 'btn btn-large btn-success'
+    \= render 'uploads', user: current_user 
+  -else
+    .span6.offset3
+      .span3
+        = link_to "Sign Up", signup_path, class: 'btn btn-large btn-primary'
+      .span2.text-right
+        = link_to "Sign In", login_path, class: 'btn btn-large btn-success'
+

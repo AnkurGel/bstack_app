@@ -1,0 +1,20 @@
+-title "Sign Up"
+%h1 Sign Up
+.row
+  .span6.offset3
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      #error_messages
+        = devise_error_messages!
+
+      = f.label :email
+      = f.text_field :email
+
+      = f.label :password
+      = f.password_field :password
+
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+
+      %br
+      = f.submit "Sign Up", class: 'btn btn-large btn-primary'
+    = render 'devise/shared/links'
