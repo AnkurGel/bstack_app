@@ -5,4 +5,9 @@
       %nav
         %ul.nav.pull-right
           %li= link_to "Home", root_path
-          %li= link_to "Sign Up", signup_path
+          - if signed_in?
+            %li= link_to "Upload file", file_upload_path
+            %li= link_to "Sign out", logout_path, method: :delete
+          - else
+            %li= link_to "Sign Up", signup_path
+            %li= link_to "Login", login_path
