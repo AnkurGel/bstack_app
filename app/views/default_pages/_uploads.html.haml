@@ -1,0 +1,14 @@
+- if user.uploads.any?
+  .container.listing
+    .row
+      .span12
+        %table.table.table-striped.table-hover.table-bordered
+          %thead
+            %tr
+              %th Sno
+              %th Filename
+              %th Uploaded On
+              %th Download
+          %tbody
+            = render partial: 'upload', collection: user.uploads, as: :upload
+

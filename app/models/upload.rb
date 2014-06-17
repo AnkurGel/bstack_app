@@ -15,6 +15,7 @@ class Upload < ActiveRecord::Base
     filename = @uploaded_object.original_filename
     self.name = sanitize_filename(filename)
     self.size = @uploaded_object.tempfile.size
+    self.content_type = @uploaded_object.content_type
     self.path = Rails.root.join('public', 'uploads', self.name).to_s
   end
 

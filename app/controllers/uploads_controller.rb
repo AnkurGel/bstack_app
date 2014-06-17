@@ -1,6 +1,6 @@
 class UploadsController < ApplicationController
   before_action :signed_in_user
-  before_action :authorized_user, only: [:show, :destroy]
+  before_action :authorized_user, only: [:show, :destroy, :download]
 
   def new
     @upload = current_user.uploads.build
@@ -30,6 +30,12 @@ class UploadsController < ApplicationController
       flash[:error] = "Something went wrong while deleting your file"
       redirect_to root_url
     end
+  end
+
+  def download
+    # download_upload_path
+    @upload = Upload.find(params[:id])
+    send_file @upload.path, type: @upload.content_type, disposition: 'attachment'
   end
 
   private

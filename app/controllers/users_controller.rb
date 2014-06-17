@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome onboard, #{@user.name}"
+      # Take the user directly to the upload form, after fresh signup
       redirect_to file_upload_path
     else
       render 'new'

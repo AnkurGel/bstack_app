@@ -1,7 +1,9 @@
 Bstack::Application.routes.draw do
   resources :users
   resources :sessions
-  resources :uploads, only: [:new, :create, :destroy]
+  resources :uploads, only: [:new, :create, :destroy] do
+    get 'download', on: :member
+  end
 
   root 'default_pages#home'
   get '/signup' => 'users#new'
