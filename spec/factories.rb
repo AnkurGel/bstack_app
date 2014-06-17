@@ -1,10 +1,9 @@
 FactoryGirl.define do
-  factory :file do
-
+  factory :upload do
     path ActionDispatch::Http::UploadedFile.new(
       tempfile: File.new("#{Rails.root}/spec/factories.rb"), 
       filename: 'factories.rb')
-
+    user
   end
 
   factory :user do
