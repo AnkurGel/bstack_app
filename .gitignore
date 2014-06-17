@@ -16,4 +16,4 @@
 /tmp
 .rvmrc
 .ruby-version
-
+public/uploads/*
