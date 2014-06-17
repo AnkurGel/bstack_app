@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140616144319) do
+ActiveRecord::Schema.define(version: 20140617040810) do
+
+  create_table "uploads", force: true do |t|
+    t.string   "name"
+    t.integer  "size"
+    t.integer  "type_id"
+    t.string   "path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "uploads", ["path"], name: "index_uploads_on_path", unique: true
 
   create_table "users", force: true do |t|
     t.string   "name"

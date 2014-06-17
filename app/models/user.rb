@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 6 }
 
+  has_many :uploads
+
   def User.new_random_token
     SecureRandom.urlsafe_base64.to_s
   end

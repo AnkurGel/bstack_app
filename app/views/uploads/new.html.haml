@@ -1,2 +1,9 @@
 %h1 Upload File
 
+.row
+  .span6.offset3
+    = form_for @upload do |f|
+
+      = f.file_field :path
+
+      = f.submit "Upload Now", class: 'btn btn-primary'
