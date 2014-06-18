@@ -6,11 +6,17 @@ Bstack::Application.routes.draw do
   }
 
   devise_scope :user do
+    # changing the path helpers to make it conform to existing scratch-config branch
     delete '/logout' => 'devise/sessions#destroy', as: :logout
     get '/login' => 'devise/sessions#new', as: :login
     get '/signup' => 'devise/registrations#new', as: :signup
   end
 
+  resources :uploads, only: [:new, :create, :destroy] do
+    get 'download', on: :member
+  end
+
+  get '/upload' => 'uploads#new', as: 'file_upload'
   root 'default_pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

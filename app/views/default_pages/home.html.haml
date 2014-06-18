@@ -4,8 +4,8 @@
   - if signed_in?
     .span6.offset3
       .text-center
-        = link_to "Upload New File", '#', class: 'btn btn-large btn-success'
-    \= render 'uploads', user: current_user 
+        = link_to "Upload New File", file_upload_path, class: 'btn btn-large btn-success'
+    = render 'uploads', user: current_user 
   -else
     .span6.offset3
       .span3
