@@ -27,7 +27,7 @@ class UploadsController < ApplicationController
     else
       flash[:error] = "Something went wrong while deleting your file"
     end
-      redirect_to rot_url
+      redirect_to root_url
   end
 
   def download
