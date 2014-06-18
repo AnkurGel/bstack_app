@@ -41,4 +41,41 @@ describe 'AuthPages' do
     end
   end
 
+
+  describe 'SignIn Page' do
+    let!(:user) { FactoryGirl.create :user }
+    before { visit login_path }
+    subject { page }
+
+    it { should have_field 'Email' }
+    it { should have_field 'Password' }
+    it { should have_button 'Login' }
+
+    describe 'when tried to login with incorrect credentials' do
+      before do
+        fill_in 'Email',    with: user.email
+        fill_in 'Password', with: 'wrongpass'
+        click_button 'Login'
+      end
+
+      it { should have_selector('div.alert.alert-error',
+                                text: 'Invalid email or password') }
+    end
+
+    describe 'when tried to login with correct credentials' do
+      before do
+        fill_in 'Email',    with: user.email
+        fill_in 'Password', with: user.password
+        click_button 'Login'
+      end
+
+      it { should have_content("Welcome Back, #{user.name}") }
+      it { should have_link('Upload file',     href: file_upload_path) }
+      it { should have_link('Upload New File', href: file_upload_path) }
+      it { should have_content('Sign out') }
+
+    end
+
+  end
+
 end
