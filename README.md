@@ -25,6 +25,7 @@ The application in this branch allows a user to sign up, upload his files, downl
 bundle install
 rake db:create
 rake db:migrate
+rake db:test:prepare
 rake spec/
 rails server
 ```
