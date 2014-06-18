@@ -3,3 +3,4 @@
   %td= upload.file.file.original_filename
   %td= "#{time_ago_in_words(upload.created_at)} ago"
   %td= link_to "Download", download_upload_path(upload), class: 'btn'
+  %td= link_to "Delete", upload_path(upload), method: :delete, class: 'btn btn-danger'

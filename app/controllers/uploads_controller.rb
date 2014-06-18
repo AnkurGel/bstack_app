@@ -21,6 +21,13 @@ class UploadsController < ApplicationController
   end
 
   def destroy
+    @upload = Upload.find(params[:id])
+    if @upload.destroy
+      flash[:success] = "File successfully removed from our system"
+    else
+      flash[:error] = "Something went wrong while deleting your file"
+    end
+    redirect_to root_url
   end
 
   def download
