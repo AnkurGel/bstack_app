@@ -1,6 +1,6 @@
 class UploadsController < ApplicationController
   before_action :authenticate_user!
-  # make before callback for authorization
+  before_action :authorized_user, only: [:show, :destroy, :download]
   
   def new
     @upload = Upload.new
@@ -13,7 +13,10 @@ class UploadsController < ApplicationController
   def create
     @upload = current_user.uploads.build(upload_params)
     if @upload.save
-      debugger
+      flash[:success] = "#{@upload.file.file.original_filename} successfully uploaded."
+      redirect_to root_path
+    else
+      render 'new'
     end
   end
 

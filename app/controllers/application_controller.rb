@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def authorized_user
+    if current_user != Upload.find(params[:id]).user
+      flash[:error] = "You are not authorized to have any access for this file"
+      redirect_to root_url
+    end
+  end
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
