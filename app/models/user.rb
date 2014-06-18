@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
          :rememberable, :validatable
 
   validates :name, presence: true, length: { maximum: 60 }
+  validates_associated :uploads
+  
+  has_many :uploads
 end
